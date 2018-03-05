@@ -134,11 +134,11 @@
             <code>
                 function getEmployeeSupervisorName(id: number) {
                     const employee = repository.get(id);
-                    if (employee !== undefined && employee.supervisorId !== undefined) {
+                    if (employee !== undefined && 
+                        employee.supervisorId !== undefined) {
                         const supervisor = repository.get(employee.supervisorId);
-                        if (supervisor !== undefined) {
+                        if (supervisor !== undefined)
                             return supervisor.name;
-                        }
                     }
                     return undefined;
                 }
@@ -153,11 +153,11 @@
                 function getEmployeeSupervisorNameSafe(id: number) {
                     if (id !== undefined) {
                         const employee = repository.get(id);
-                        if (employee !== undefined && employee.supervisorId !== undefined) {
+                        if (employee !== undefined && 
+                            employee.supervisorId !== undefined) {
                             const supervisor = repository.get(employee.supervisorId);
-                            if (supervisor !== undefined) {
+                            if (supervisor !== undefined)
                                 return supervisor.name;
-                            }
                         }
                     }
                     return undefined;
@@ -179,7 +179,7 @@
 
         <pre style="font-size: 45px;" class="language-javascript line-numbers">
             <code>
-                    interface Option<T> {
+                    interface Option&lt;T&gt; {
                         getOrElse(defaultValue: T): T;
                     }
             </code>
@@ -191,7 +191,7 @@
 
         <pre style="font-size: 40px;" class="language-javascript line-numbers">
             <code>
-                    class Some<T> implements Option<T> {
+                    class Some&lt;T&gt; implements Option&lt;T&gt; {
                         constructor(private value: T) {}
                     
                         getOrElse(defaultValue: T): T {
@@ -207,7 +207,7 @@
 
         <pre style="font-size: 40px;" class="language-javascript line-numbers">
             <code>
-                    class None<T> implements Option<T> {
+                    class None&lt;T&gt; implements Option&lt;T&gt; {
                         getOrElse(defaultValue: T): T {
                             return defaultValue;
                         }
@@ -224,7 +224,7 @@
                 interface Employee {
                     id: number;
                     name: string;
-                    supervisorId: Option<number>;
+                    supervisorId: Option&lt;number&gt;;
                 }
             </code>
         </pre>
@@ -238,7 +238,7 @@
                 class EmployeeRepository {
                     private employees: Employee[] = [ /* ... */ ];
                 
-                    get(id: number): Option<Employee> {
+                    get(id: number): Option&lt;Employee&gt; {
                         const result = this.employees.find(e => e.id === id);
                         return result ? new Some(result) : new None();
                     }
@@ -252,9 +252,10 @@
 
         <pre style="font-size: 35px;" class="language-javascript line-numbers">
             <code>
-                    interface Option<T> {
+                    interface Option&lt;T&gt; {
                         getOrElse(defaultValue: T): T;
-                        map<R>(project: (inner: T) => R): Option<R>;
+                        map&lt;R&gt;(project: (inner: T) => R)
+                            : Option&lt;R&gt;;
                     }
             </code>
         </pre>
@@ -265,8 +266,9 @@
 
         <pre style="font-size: 35px;" class="language-javascript line-numbers">
             <code>
-                    class Some<T> implements Option<T> {                                            
-                        map<R>(project: (inner: T) => R): Option<R> {
+                    class Some&lt;T&gt; implements Option&lt;T&gt; {                                            
+                        map&lt;R&gt;(project: (inner: T) => R)
+                            : Option&lt;R&gt; {
                             return new Some(project(this.value));
                         }
                         // ...
@@ -280,9 +282,10 @@
 
         <pre style="font-size: 35px;" class="language-javascript line-numbers">
             <code>
-                    class None<T> implements Option<T> {
-                        map<R>(project: (inner: T) => R): Option<R> {
-                            return new None<R>();
+                    class None&lt;T&gt; implements Option&lt;T&gt; {
+                        map&lt;R&gt;(project: (inner: T) => R)
+                            : Option&lt;R&gt; {
+                            return new None&lt;R&gt;();
                         }
                         // ...
                     }
@@ -311,7 +314,7 @@
 
         <pre style="font-size: 30px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeName(id: number): Option<string> {
+                function getEmployeeName(id: number): Option&lt;string&gt; {
                     return repository.get(id).map(e => e.name);
                 }
             </code>
@@ -324,7 +327,7 @@
         <pre style="font-size: 30px;" class="language-javascript line-numbers">
             <code>
                 function getEmployeeSupervisor(id: number)
-                    : Option<Option<number>> {
+                    : Option&lt;Option&lt;number&gt;&gt; {
                     return repository.get(id)
                         .map(e => e.supervisorId);
                 }
@@ -341,11 +344,11 @@
 
         <pre style="font-size: 30px;" class="language-javascript line-numbers">
             <code>
-                export interface Option<T> {
+                export interface Option&lt;T&gt; {
                     getOrElse(defaultValue: T): T;
-                    map<R>(project: (inner: T) => R): Option<R>;
-                    flatMap<R>(project: (inner: T) => Option<R>)
-                        : Option<R>;
+                    map&lt;R&gt;(project: (inner: T) => R): Option&lt;R&gt;;
+                    flatMap&lt;R&gt;(project: (inner: T) => Option&lt;R&gt;)
+                        : Option&lt;R&gt;;
                 }
             </code>
         </pre>
@@ -358,11 +361,11 @@
                 function getEmployeeSupervisorNameSafe(id: number) {
                     if (id !== undefined) {
                         const employee = repository.get(id);
-                        if (employee !== undefined && employee.supervisorId !== undefined) {
+                        if (employee !== undefined && 
+                            employee.supervisorId !== undefined) {
                             const supervisor = repository.get(employee.supervisorId);
-                            if (supervisor !== undefined) {
+                            if (supervisor !== undefined)
                                 return supervisor.name;
-                            }
                         }
                     }
                     return undefined;
@@ -376,7 +379,7 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeSupervisorNameSafe(idOption: Option<number>) {
+                function getEmployeeSupervisorNameSafe(idOption: Option&lt;number&gt;) {
                     return idOption
                         .flatMap(id => repository.get(id))
                         .flatMap(employee => employee.supervisorId)
@@ -394,12 +397,12 @@
     <section class="slide prism">
         <h2><strong>Updated</strong> Model</h2>
 
-        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+        <pre style="font-size: 35px;" class="language-javascript line-numbers">
             <code>
                 interface Employee {
                     id: number;
                     name: string;
-                    supervisorId: Result<number, string>;
+                    supervisorId: Result&lt;number, string&gt;;
                 }
             </code>
         </pre>
@@ -410,7 +413,7 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                get(id: number): Result<Employee, string> {
+                get(id: number): Result&lt;Employee, string&gt; {
                     const result = this.employees.find(e => e.id === id);
                     return result 
                         ? new Success(result) 
@@ -496,7 +499,7 @@
                 interface Employee {
                     id: number;
                     name: string;
-                    supervisorId: Promise<number>;
+                    supervisorId: Promise&lt;number&gt;;
                 }
             </code>
         </pre>
@@ -507,7 +510,7 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                get(id: number): Promise<Employee> {
+                get(id: number): Promise&lt;Employee&gt; {
                     const result = this.employees.find(e => e.id === id);
                     return result 
                         ? Promise.resolve(result) 
@@ -522,7 +525,7 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeSupervisorNameSafe(idOption: Promise<number>) {
+                function getEmployeeSupervisorNameSafe(idOption: Promise&lt;number&gt;) {
                     return idOption
                         .then(id => repository.get(id))
                         .then(employee => employee.supervisorId)
@@ -541,12 +544,12 @@
     <section class="slide prism">
         <h2><strong>Updated</strong> Model</h2>
 
-        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+        <pre style="font-size: 35px;" class="language-javascript line-numbers">
             <code>
                     interface Employee {
                         id: number;
                         name: string;
-                        supervisorId: Observable<number>;
+                        supervisorId: Observable&lt;number&gt;;
                     }
             </code>
         </pre>
@@ -557,7 +560,7 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                get(id: number): Observable<Employee> {
+                get(id: number): Observable&lt;Employee&gt; {
                     const result = this.employees.find(e => e.id === id);
                     return result 
                         ? Observable.of(result) 
@@ -572,7 +575,8 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeSupervisorNameSafe(idOption: Observable<number>) {
+                function getEmployeeSupervisorNameSafe
+                        (idOption: Observable&lt;number&gt;) {
                     return idOption
                         .flatMap(id => repository.get(id))
                         .flatMap(employee => employee.supervisorId)
