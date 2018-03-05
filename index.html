@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>WarsawJS Slides: Template</title>
+    <title>From Options to Observables: a monadic journey</title>
 
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -19,8 +19,8 @@
 </head>
 <body class="shower list">
     <header class="caption">
-        <h1>WarsawJS Slides: Template</h1>
-        <p>We talk about JavaScript. Each month in Warsaw, Poland.</p>
+        <h1>From Options to Observables: a monadic journey</h1>
+        <p>Miłosz Piechocki</p>
     </header>
 
     <section class="slide front-page">
@@ -33,293 +33,586 @@
             <img src="pictures/my-avatar.jpg" alt="Speaker"/>
 
             <!-- 2. Speaker -->
-            <h2>Speaker name</h2>
+            <h2>Miłosz Piechocki</h2>
 
             <!-- 3. Presentation title -->
-            <h2><strong>"WarsawJS Slides: Template" [PL/EN]</strong></h2>
+            <h2><strong>From Options to Observables: a monadic journey</strong></h2>
 
             <!-- 4. Presentation date -->
-            <h2>XXXX-XX-XX</h2>
+            <h2>2018-03-14</h2>
 
             <!-- 5. Contact the speaker -->
-            <h2><a href="http://twitter.com/speaker">@speaker</a></h2>
+            <h2><a href="http://twitter.com/miloszpp">@miloszpp</a></h2>
         </div>
     </section>
 
-    <section class="slide compact">
-        <h2>TODO: Please update slides:</h2>
-        <ul>
-            <li>rename project at <mark>GitHub</mark> with snake-case convention</li>
-            <li><mark>description</mark> and <mark>link</mark> on GitHub repository profile</li>
-            <li>link to <mark>"Fork me on GitHub"</mark> on the bottom of document</li>
-            <li>setup presentation title in
-                <ul>
-                    <li><mark>&lt;title&gt;</mark> tag on the top of document in <mark>&lt;head&gt;</mark> tag</li>
-                    <li><mark>README.md</mark> file</li>
-                    <li><mark>&lt;h1&gt;</mark> tag at <mark>&lt;header&gt;</mark> tag on the top of document</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
-
-    <section class="slide compact">
-        <h2>List Navigation</h2>
-        <ol>
-            <li>Ennui keffiyeh thundercats</li>
-            <li class="next">Jean shorts biodiesel</li>
-            <li class="next">Terry richardson, swag blog</li>
-            <li class="next">Locavore umami vegan helvetica</li>
-            <li class="next">Fingerstache kale chips</li>
-        </ol>
-        <p class="next">Before they sold out master</p>
-    </section>
-
-    <section class="slide compact">
-        <h2>Slide Header</h2>
-
-        <p>Echo Park 8-bit sustainable umami deep v Kickstarter. DIY cliche typewriter brunch, Odd Future sriracha pickled aesthetic. Farm-to-table bespoke fingerstache, kale chips umami brunch letterpress.</p>
-        <p>Whatever authentic disrupt, you probably haven't heard of them direct trade mlkshk Etsy. Gluten-free roof party plaid four loko quinoa.</p>
-        <p class="note">Echo Park 8-bit sustainable umami deep v Kickstarter.</p>
-    </section>
-
-    <section class="slide compact">
-        <h2>Inline Elements</h2>
-
-        <p>Retro meh brunch <a href="">aesthetic</a> Cosby sweater Shoreditch. Banksy Tumblr
-            <strong>sriracha</strong>, flexitarian pug chia master cleanse vinyl
-            <em>wayfarers</em> fanny pack bespoke Helvetica <b>roof</b> party. Messenger bag retro cred
-            <i>Portland</i> next level. Yr stumptown Schlitz Carles deep v small batch. Hella sustainable messenger bag,
-            <mark>leggings</mark>
-            skateboard literally<sup>1</sup> bicycle rights H<sub>2</sub>0 mumblecore banh mi DIY VHS. Semiotics four loko street art asymmetrical. Asymmetrical
-            <code>&lt;paleo&gt;</code> you probably haven’t heard of.
-        </p>
-
-        <footer class="footer">
-            <p>Retro meh brunch <a href="">aesthetic</a> Cosby sweater Shoreditch. Banksy Tumblr
-                <strong>sriracha</strong>, flexitarian pug chia master cleanse vinyl
-                <em>wayfarers</em> fanny pack bespoke Helvetica <b>roof</b> party. Messenger bag retro cred
-                <i>Portland</i> next level. Yr stumptown Schlitz Carles deep v small batch. Hella sustainable messenger bag,
-                <mark>leggings</mark>
-                skateboard literally<sup>1</sup> bicycle rights H<sub>2</sub>0 mumblecore banh mi DIY VHS. Semiotics four loko street art asymmetrical. Asymmetrical
-                <code>&lt;paleo&gt;</code> you probably haven’t heard of.
-            </p>
-        </footer>
-    </section>
-
-    <section class="slide compact">
-        <h2>Columns</h2>
-        <p class="double">Echo Park 8-bit sustainable umami deep v Kickstarter. DIY cliche typewriter brunch, Odd Future sriracha pickled aesthetic. Farm-to-table bespoke fingerstache, kale chips umami brunch American Apparel letterpress. Whatever authentic disrupt, you probably haven't heard of them direct trade mlkshk Etsy. Gluten-free roof party plaid American Apparel four loko quinoa. Echo Park 8-bit sustainable.</p>
-    </section>
-
     <section class="slide">
-        <h2>Quotes</h2>
-        <blockquote>
-            <p>Flannel bicycle rights locavore selfies skateboard. Authentic fanny pack paleo four loko bespoke. Artisan tattooed chia XOXO ennui, lomo disrupt 8-bit art party Tumblr scenester.</p>
-        </blockquote>
+        <h2>Definition</h2>
         <figure>
             <blockquote>
-                <p>Post-ironic fashion axe flexitarian, Tonx narwhal messenger bag Tumblr. Portland gentrify deep v kale chips literally.</p>
+                <p>Monad is just a monoid in the category of endofunctors.</p>
             </blockquote>
-            <figcaption>Yours Truly</figcaption>
+            <figcaption>Saunders Mac Lane</figcaption>
         </figure>
     </section>
 
-    <section class="slide compact">
-        <h2>Nested Lists</h2>
-        <ol>
-            <li>Literally viral vegan, ugh drinking vinegar photo booth</li>
-            <li>Wes Anderson chillwave Marfa pour-over Etsy banh mi</li>
-            <li>Ethnic polaroid lo-fi iPhone ennui
-                <ul>
-                    <li>Yr wayfarers before they sold out Kickstarter asymmetrical</li>
-                    <li>Irony flexitarian readymade quinoa, kogi bespoke meggings narwhal</li>
-                    <li>Skateboard Etsy twee artisan Echo Park</li>
-                </ul>
-            </li>
-            <li>Tonx kitsch fingerstache readymade, retro single-origin coffee</li>
-        </ol>
+    <section class="slide">
+        <h2 class="shout grow">WTF?</h2>
     </section>
 
-    <section class="slide compact">
-        <h2>Simple Table</h2>
-        <table>
-            <tr>
-                <th scope="col">Gentrify</th>
-                <th>Twee</th>
-                <th>Artisan</th>
-                <th>Banksy</th>
-            </tr>
-            <tr>
-                <th scope="row">Messenger</th>
-                <td>Mixtape</td>
-                <td>Small batch</td>
-                <td>Bicycle rights</td>
-            </tr>
-            <tr>
-                <th scope="row">Meggings</th>
-                <td>Freegan</td>
-                <td>Retro biodiesel</td>
-                <td>Slow-carb</td>
-            </tr>
-            <tr>
-                <th scope="row">Vegan</th>
-                <td>Occupy</td>
-                <td>Normcore</td>
-                <td>Put a bird on it</td>
-            </tr>
-            <tr>
-                <th scope="row">Next level</th>
-                <td>Selfies</td>
-                <td>Sustainable</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <th scope="row">Umami</th>
-                <td>Asymmetrical</td>
-                <td>Keytar</td>
-                <td>Craft beer</td>
-            </tr>
-            <tr>
-                <th scope="row">Biodiesel</th>
-                <td>Haven’t heard</td>
-                <td>Skateboard</td>
-                <td>Farm-to-table</td>
-            </tr>
-        </table>
-    </section>
-
-    <section class="slide compact">
-        <h2>Striped Table</h2>
-        <table class="striped">
-            <tr>
-                <th scope="col">Gentrify</th>
-                <th>Twee</th>
-                <th>Artisan</th>
-                <th>Banksy</th>
-            </tr>
-            <tr>
-                <th scope="row">Messenger</th>
-                <td>Mixtape</td>
-                <td>Small batch</td>
-                <td>Bicycle rights</td>
-            </tr>
-            <tr>
-                <th scope="row">Meggings</th>
-                <td>Freegan</td>
-                <td>Retro biodiesel</td>
-                <td>Slow-carb</td>
-            </tr>
-            <tr>
-                <th scope="row">Vegan</th>
-                <td>Occupy</td>
-                <td>Normcore</td>
-                <td>Put a bird on it</td>
-            </tr>
-            <tr>
-                <th scope="row">Next level</th>
-                <td>Selfies</td>
-                <td>Sustainable</td>
-                <td>Organic</td>
-            </tr>
-            <tr>
-                <th scope="row">Umami</th>
-                <td>Asymmetrical</td>
-                <td>Keytar</td>
-                <td>Craft beer</td>
-            </tr>
-            <tr>
-                <th scope="row">Biodiesel</th>
-                <td>Haven’t heard</td>
-                <td>Skateboard</td>
-                <td>Farm-to-table</td>
-            </tr>
-        </table>
+    <section class="slide">
+        <h2 class="shout">Let's start from the beginning..</h2>
     </section>
 
     <section class="slide prism">
-        <h2>Listing Slide</h2>
+        <h2>Model</h2>
 
         <pre style="font-size: 45px;" class="language-javascript line-numbers">
             <code>
-                function wrap(value) {
-                    return function () {
-                        return value;
-                    }
-                }
-
-                function bind(monad, f) {
-                    return f(monad());
+                interface Employee {
+                    id: number;
+                    name: string;
+                    supervisorId: number;
                 }
             </code>
         </pre>
     </section>
 
     <section class="slide prism">
+        <h2>Repository</h2>
+
         <pre style="font-size: 30px;" class="language-javascript line-numbers">
             <code>
-                var monad = wrap('cookie');
-                bind(monad, (value) => {
-                    console.info(value);
-                    return wrap(value);
-                });
-                monad = bind(monad, (value) => {
-                    return wrap({ type: value });
-                });
-                bind(monad, (value) => {
-                    console.log(value);
-                    return wrap(value);
-                });
+                class EmployeeRepository {
+                    private employees: Employee[] = [ /* ... */ ];
+                
+                    get(id: number): Employee {
+                        return this.employees.find(e => e.id === id);
+                    }
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Dealing with empty results</h2>
+
+        <pre style="font-size: 30px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeName(id: number) {
+                    const employee = repository.get(id);
+                    if (employee !== undefined) {
+                        return employee.name;
+                    }
+                    return undefined;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Dealing with empty results</h2>
+
+        <pre style="font-size: 30px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisor(id: number) {
+                    const employee = repository.get(id);
+                    if (employee !== undefined && 
+                        employee.supervisorId !== undefined) {
+                        return repository.get(employee.supervisorId);
+                    }
+                    return undefined;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Dealing with empty results</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorName(id: number) {
+                    const employee = repository.get(id);
+                    if (employee !== undefined && employee.supervisorId !== undefined) {
+                        const supervisor = repository.get(employee.supervisorId);
+                        if (supervisor !== undefined) {
+                            return supervisor.name;
+                        }
+                    }
+                    return undefined;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+
+        <pre style="font-size: 25px" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorNameSafe(id: number) {
+                    if (id !== undefined) {
+                        const employee = repository.get(id);
+                        if (employee !== undefined && employee.supervisorId !== undefined) {
+                            const supervisor = repository.get(employee.supervisorId);
+                            if (supervisor !== undefined) {
+                                return supervisor.name;
+                            }
+                        }
+                    }
+                    return undefined;
+                }
             </code>
         </pre>
     </section>
 
     <section class="slide">
-        <h2 class="shout"><a href="">Linked</a> Shout</h2>
+        <h2 class="shout">Not cool...</h2> <!-- MEME? -->
     </section>
 
     <section class="slide">
-        <h2 class="shout grow">Effect: Growing Shout</h2>
+        <h2 class="shout"><strong>Option</strong> to the rescue!</h2>
+    </section>
+
+    <section class="slide prism">
+        <h2>Enter <strong>Option</strong></h2>
+
+        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+            <code>
+                    interface Option<T> {
+                        getOrElse(defaultValue: T): T;
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>Some</strong> result is present!</h2>
+
+        <pre style="font-size: 40px;" class="language-javascript line-numbers">
+            <code>
+                    class Some<T> implements Option<T> {
+                        constructor(private value: T) {}
+                    
+                        getOrElse(defaultValue: T): T {
+                            return this.value;
+                        }
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>None</strong> result is present...</h2>
+
+        <pre style="font-size: 40px;" class="language-javascript line-numbers">
+            <code>
+                    class None<T> implements Option<T> {
+                        getOrElse(defaultValue: T): T {
+                            return defaultValue;
+                        }
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Model</h2>
+
+        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+            <code>
+                interface Employee {
+                    id: number;
+                    name: string;
+                    supervisorId: Option<number>;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Repository</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                class EmployeeRepository {
+                    private employees: Employee[] = [ /* ... */ ];
+                
+                    get(id: number): Option<Employee> {
+                        const result = this.employees.find(e => e.id === id);
+                        return result ? new Some(result) : new None();
+                    }
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Transforming content: map</h2>
+
+        <pre style="font-size: 35px;" class="language-javascript line-numbers">
+            <code>
+                    interface Option<T> {
+                        getOrElse(defaultValue: T): T;
+                        map<R>(project: (inner: T) => R): Option<R>;
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Transforming content: map for <strong>Some</strong></h2>
+
+        <pre style="font-size: 35px;" class="language-javascript line-numbers">
+            <code>
+                    class Some<T> implements Option<T> {                                            
+                        map<R>(project: (inner: T) => R): Option<R> {
+                            return new Some(project(this.value));
+                        }
+                        // ...
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Transforming content: map for <strong>None</strong></h2>
+
+        <pre style="font-size: 35px;" class="language-javascript line-numbers">
+            <code>
+                    class None<T> implements Option<T> {
+                        map<R>(project: (inner: T) => R): Option<R> {
+                            return new None<R>();
+                        }
+                        // ...
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Remember this?</h2>
+
+        <pre style="font-size: 30px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeName(id: number) {
+                    const employee = repository.get(id);
+                    if (employee !== undefined) {
+                        return employee.name;
+                    }
+                    return undefined;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>It's a one-liner now</h2>
+
+        <pre style="font-size: 30px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeName(id: number): Option<string> {
+                    return repository.get(id).map(e => e.name);
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>How about this one?</h2>
+
+        <pre style="font-size: 30px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisor(id: number)
+                    : Option<Option<number>> {
+                    return repository.get(id)
+                        .map(e => e.supervisorId);
+                }
+            </code>
+        </pre>
     </section>
 
     <section class="slide">
-        <h2 class="shout shrink">Effect: Shrinking Shout</h2>
+        <h2 class="shout">We need <strong>flatMap</strong>!</h2>
+    </section>
+
+    <section class="slide prism">
+        <h2>Enter <strong>flatMap</strong></h2>
+
+        <pre style="font-size: 30px;" class="language-javascript line-numbers">
+            <code>
+                export interface Option<T> {
+                    getOrElse(defaultValue: T): T;
+                    map<R>(project: (inner: T) => R): Option<R>;
+                    flatMap<R>(project: (inner: T) => Option<R>)
+                        : Option<R>;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+
+        <pre style="font-size: 25px" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorNameSafe(id: number) {
+                    if (id !== undefined) {
+                        const employee = repository.get(id);
+                        if (employee !== undefined && employee.supervisorId !== undefined) {
+                            const supervisor = repository.get(employee.supervisorId);
+                            if (supervisor !== undefined) {
+                                return supervisor.name;
+                            }
+                        }
+                    }
+                    return undefined;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>flatMap</strong> power!</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorNameSafe(idOption: Option<number>) {
+                    return idOption
+                        .flatMap(id => repository.get(id))
+                        .flatMap(employee => employee.supervisorId)
+                        .flatMap(supervisorId => repository.get(supervisorId))
+                        .map(supervisor => supervisor.name);
+                }
+            </code>
+        </pre>
     </section>
 
     <section class="slide">
-        <figure>
-            <img class="cover" src="vendors/shower-ribbon/pictures/exact.png" alt="">
-            <figcaption class="white">Copyright © 2016 <a href="">Yours Truly</a>, Famous Inc.</figcaption>
-        </figure>
+        <h2 class="shout">How about errors?</h2>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Model</h2>
+
+        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+            <code>
+                interface Employee {
+                    id: number;
+                    name: string;
+                    supervisorId: Result<number, string>;
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Repository</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                get(id: number): Result<Employee, string> {
+                    const result = this.employees.find(e => e.id === id);
+                    return result 
+                        ? new Success(result) 
+                        : new Failure("No employee found");
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>This code still works!</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorNameSafe(idOption) {
+                    return idOption
+                        .flatMap(id => repository.get(id))
+                        .flatMap(employee => employee.supervisorId)
+                        .flatMap(supervisorId => repository.get(supervisorId))
+                        .map(supervisor => supervisor.name);
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Employee hierarchy</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                private employees: Employee[] = [
+                    { id: 1, name: "Piotr Kowalski", 
+                        supervisorId: new Success(2) },
+                    { id: 2, name: "Katarzyna Grabowska", 
+                        supervisorId: new Failure("No supervisor") },
+                    { id: 3, name: "Piotr Zientara", 
+                        supervisorId: new Success(2) },
+                ];
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Sample calls</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                    getEmployeeSupervisorNameSafe(new Success(1));
+                    // Success {value: "Katarzyna Grabowska"}
+                    getEmployeeSupervisorNameSafe(new Success(2));
+                    // Failure {failure: "No supervisor"}
+                    getEmployeeSupervisorNameSafe(new Success(5));
+                    // Failure {failure: "No employee found"}
+            </code>
+        </pre>
     </section>
 
     <section class="slide">
-        <img class="cover" src="vendors/shower-ribbon/pictures/tall.png" alt="">
-    </section>
+        <h2 class="shout">Did we just invent <strong>exceptions</strong>?</h2>
+    </section>   
+    
+    <section class="slide prism">
+        <h2>Railway-oriented programming</h2>
+        
+        <h3>Results</h3>
+        <img src="pictures/Recipe_RailwaySwitch1.png" alt="">
+
+        <h3>flatMap (a.k.a. bind)</h3>
+        <img src="pictures/Recipe_RailwaySwitch2.png" alt="">
+
+        <figcaption><a href="https://fsharpforfunandprofit.com/rop/">https://fsharpforfunandprofit.com/rop/</a></figcaption>
+    </section>  
 
     <section class="slide">
-        <img class="cover" src="vendors/shower-ribbon/pictures/wide.png" alt="">
+        <h2 class="shout">Handling <strong>future</strong> results</h2>
     </section>
 
-    <section class="slide white">
-        <img class="place top left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place top" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place top right" src="vendors/shower-ribbon/pictures/square.png" alt="">
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Model</h2>
 
-        <img class="place left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place right" src="vendors/shower-ribbon/pictures/square.png" alt="">
-
-        <img class="place bottom left" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place bottom" src="vendors/shower-ribbon/pictures/square.png" alt="">
-        <img class="place bottom right" src="vendors/shower-ribbon/pictures/square.png" alt="">
+        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+            <code>
+                interface Employee {
+                    id: number;
+                    name: string;
+                    supervisorId: Promise<number>;
+                }
+            </code>
+        </pre>
     </section>
 
-    <section class="slide" data-timing="00:03">
-        <h3 class="shout">Automatic switch slide after <strong>3 secs</strong> ...</h3>
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Repository</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                get(id: number): Promise<Employee> {
+                    const result = this.employees.find(e => e.id === id);
+                    return result 
+                        ? Promise.resolve(result) 
+                        : Promise.reject("No employee found");
+                }
+            </code>
+        </pre>
     </section>
+
+    <section class="slide prism">
+        <h2>Still (almost) the same code!</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorNameSafe(idOption: Promise<number>) {
+                    return idOption
+                        .then(id => repository.get(id))
+                        .then(employee => employee.supervisorId)
+                        .then(supervisorId => repository.get(supervisorId))
+                        .then(supervisor => supervisor.name);
+                }
+            </code>
+        </pre>
+    </section> 
 
     <section class="slide">
-        <h3 class="shout">See you next month at WarsawJS</h3>
+        <h2 class="shout">And finally... <strong>Observables!</strong></h2>
+    </section>
+
+
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Model</h2>
+
+        <pre style="font-size: 45px;" class="language-javascript line-numbers">
+            <code>
+                    interface Employee {
+                        id: number;
+                        name: string;
+                        supervisorId: Observable<number>;
+                    }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2><strong>Updated</strong> Repository</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                get(id: number): Observable<Employee> {
+                    const result = this.employees.find(e => e.id === id);
+                    return result 
+                        ? Observable.of(result) 
+                        : Observable.throw("No employee found");
+                }
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide prism">
+        <h2>Exactly the same code as in <strong>Result</strong>!</h2>
+
+        <pre style="font-size: 25px;" class="language-javascript line-numbers">
+            <code>
+                function getEmployeeSupervisorNameSafe(idOption: Observable<number>) {
+                    return idOption
+                        .flatMap(id => repository.get(id))
+                        .flatMap(employee => employee.supervisorId)
+                        .flatMap(supervisorId => repository.get(supervisorId))
+                        .map(supervisor => supervisor.name);
+                }
+            </code>
+        </pre>
+    </section>     
+
+    <section class="slide compact">
+        <h2>Monads</h2>
+        <ol>
+            <li>Amazing abstraction</li>
+            <li class="next">Programmable semicolon</li>
+            <li class="next">Hide boilterplate</li>
+            <li class="next">Promote declarative style</li>
+            <li class="next">Improve type safety</li>
+        </ol>
+    </section>
+
+    <section class="slide front-page">
+        <div class="logo">
+            <!-- Logo WarsawJS -->
+            <img src="vendors/shower-warsawjs/images/logo.svg" width="400">
+        </div>
+        <h1>Thank you!</h1>
+        <div class="details">
+            
+
+            <h2>Miłosz Piechocki</h2>
+
+            <h2><strong>From Options to Observables: a monadic journey</strong></h2>
+
+            <h2>2018-03-14</h2>
+
+            <h2><a href="http://twitter.com/miloszpp">@miloszpp</a></h2>
+
+            <h2><a href="http://codewithstyle.info">codewithstyle.info</a></h2>
+        </div>
     </section>
 
     <div class="progress"></div>
