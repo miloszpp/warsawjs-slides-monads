@@ -1,4 +1,4 @@
-# WarsawJS Slides: Template
+# WarsawJS Slides: From Options to Observables: a monadic journey
 
 <img src="./vendors/shower-warsawjs/images/logo.svg" width="400" />
 
