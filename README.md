@@ -1,11 +1,6 @@
-# WarsawJS Slides: From Options to Observables: a monadic journey
+# From Options to Observables: a monadic journey
 
-<img src="./vendors/shower-warsawjs/images/logo.svg" width="400" />
-
-## Colors
-
-* JavaScript Yellow Color: `#f0db4f`
-* WarsawJS Red Color: `#f7302f`
+Slides for a talk presented during WarsawJS #43 meetup
 
 ## License
 
