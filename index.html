@@ -452,8 +452,9 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeSupervisorNameSafe(idOption) {
-                    return idOption
+                function getEmployeeSupervisorNameSafe(idResult)
+                    : Result&lt;string, string&gt; {
+                    return idResult
                         .flatMap(id => repository.get(id))
                         .flatMap(employee => employee.supervisorId)
                         .flatMap(supervisorId => repository.get(supervisorId))
@@ -549,8 +550,9 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeSupervisorNameSafe(idOption: Promise&lt;number&gt;) {
-                    return idOption
+                function getEmployeeSupervisorNameSafe(idPromise) 
+                    : Promise&lt;number&gt;{
+                    return idPromise
                         .then(id => repository.get(id))
                         .then(employee => employee.supervisorId)
                         .then(supervisorId => repository.get(supervisorId))
@@ -599,9 +601,8 @@
 
         <pre style="font-size: 25px;" class="language-javascript line-numbers">
             <code>
-                function getEmployeeSupervisorNameSafe
-                        (idOption: Observable&lt;number&gt;) {
-                    return idOption
+                function getEmployeeSupervisorNameSafe(id$): Observable&lt;number&gt; {
+                    return id$
                         .flatMap(id => repository.get(id))
                         .flatMap(employee => employee.supervisorId)
                         .flatMap(supervisorId => repository.get(supervisorId))
@@ -627,7 +628,6 @@
             <!-- Logo WarsawJS -->
             <img src="vendors/shower-warsawjs/images/logo.svg" width="400">
         </div>
-        <h1>Thank you!</h1>
         <div class="details">
             
 
@@ -637,7 +637,7 @@
 
             <h2>2018-03-14</h2>
 
-            <h2><a href="http://twitter.com/miloszpp">@miloszpp</a></h2>
+            <h2><a href="http://twitter.com/miloszpp">twitter.com/miloszpp</a></h2>
 
             <h2><a href="http://codewithstyle.info">codewithstyle.info</a></h2>
         </div>
