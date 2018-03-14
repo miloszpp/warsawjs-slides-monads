@@ -2,7 +2,7 @@
 
 Slides for a talk presented during WarsawJS #43 meetup
 
-[https://miloszpp.github.io/warsawjs-slides-monads/](VIEW)
+[VIEW](https://miloszpp.github.io/warsawjs-slides-monads/)
 
 ## License
 
